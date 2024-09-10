@@ -1,0 +1,18 @@
+# OSX
+#
+.DS_Store
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+app/agconnect-services.json
+app/google-services.json
+
+# Bundle artifacts
+*.jsbundle
