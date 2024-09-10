@@ -12,7 +12,7 @@ web-build/
 ios/Podfile.lock
 ios/Pods
 android/.gradle
-
+.idea
 # macOS
 .DS_Store
 
