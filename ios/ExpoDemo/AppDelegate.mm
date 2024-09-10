@@ -3,6 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTLinkingManager.h>
 #import <InsiderMobile/Insider.h>
+#import <Firebase.h>
 
 @implementation AppDelegate
 
@@ -15,6 +16,8 @@
   self.initialProps = @{};
 
   UNUserNotificationCenter.currentNotificationCenter.delegate = self;
+  
+  [FIRApp configure];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }

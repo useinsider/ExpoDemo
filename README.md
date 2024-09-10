@@ -38,8 +38,12 @@ Note: Can easily find the warnings added as comments by searching the `FIXME-INS
 ## IMPORTANT
 
 * The expo prebuild command was executed, generating the necessary native project files (android and ios directories) for both Android and iOS platforms. Please review the [Expo docs](https://docs.expo.dev/workflow/customizing/).
-* Due to the inconsistent behavior of the iOS push token swizzling method, the `[Insider registerDeviceTokenWithApplication:application deviceToken:deviceToken];` method has been used within the didRegisterForRemoteNotificationsWithDeviceToken method in the AppDelegate.mm file.
+* Due to the inconsistent behavior of the iOS push token swizzling method, the `[Insider registerDeviceTokenWithApplication:application deviceToken:deviceToken];` method has been used within the `didRegisterForRemoteNotificationsWithDeviceToken` method in the AppDelegate.mm file.
 * The Insider SDK includes swizzle methods for iOS push delegate methods. To ensure these methods function correctly, you must add the command `UNUserNotificationCenter.currentNotificationCenter.delegate = self;` to the AppDelegate.mm file.
+---
+* The main app file for the project has been set to index.tsx to handle push notifications when Android is in a killed state. In the App.tsx file, the “expo-router/entry” package is imported first for the Expo Router.
+* To handle push notifications in Android when the app is in the foreground and background states, Firebase handler methods have been added to the _layout.tsx file.
+* When using the Firebase package, the order of the `UNUserNotificationCenter.currentNotificationCenter.delegate = self;` command and the Firebase initialization command is crucial. In the AppDelegate.mm file, run the ` UNUserNotificationCenter.currentNotificationCenter.delegate = self;` command first, followed by `[FIRApp configure];`.
 
 ### Android
 

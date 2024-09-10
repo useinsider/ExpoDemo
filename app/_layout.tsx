@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import RNInsider from 'react-native-insider';
 import InsiderCallbackType from 'react-native-insider/src/InsiderCallbackType';
-
+import messaging from "@react-native-firebase/messaging";
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 SplashScreen.preventAutoHideAsync();
@@ -14,21 +14,21 @@ SplashScreen.preventAutoHideAsync();
 const initInsider = () => {
   // FIXME-INSIDER: Please change with your partner name and app group.
   RNInsider.init(
-    "your_partner_name",
-    "group.com.useinsider.ReactNativeDemo",
-    (type: any, data: any) => {
-      switch (type) {
-        case InsiderCallbackType.NOTIFICATION_OPEN:
-          console.log("[INSIDER][NOTIFICATION_OPEN]: ", data);
-          break;
-        case InsiderCallbackType.TEMP_STORE_CUSTOM_ACTION:
-          console.log("[INSIDER][TEMP_STORE_CUSTOM_ACTION]: ", data);
-          break;
-        case InsiderCallbackType.INAPP_SEEN:
-          console.log("[INSIDER][INAPP_SEEN]: ", data);
-          break;
+      "your_partner_name",
+      "group.com.useinsider.expodemo",
+      (type: any, data: any) => {
+        switch (type) {
+          case InsiderCallbackType.NOTIFICATION_OPEN:
+            console.log("[INSIDER][NOTIFICATION_OPEN]: ", data);
+            break;
+          case InsiderCallbackType.TEMP_STORE_CUSTOM_ACTION:
+            console.log("[INSIDER][TEMP_STORE_CUSTOM_ACTION]: ", data);
+            break;
+          case InsiderCallbackType.INAPP_SEEN:
+            console.log("[INSIDER][INAPP_SEEN]: ", data);
+            break;
+        }
       }
-    }
   );
 
   RNInsider.registerWithQuietPermission(false);
@@ -42,12 +42,48 @@ const initInsider = () => {
   console.log("[INSIDER] initialized");
 };
 
+const initFirebaseAndInsider = () => {
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      console.log(
+          "[FCM][onMessage]: A new FCM message arrived! :" +
+          JSON.stringify(remoteMessage)
+      );
+
+      if ((remoteMessage.data || {}).source === "Insider") {
+        RNInsider.handleNotification(remoteMessage.data);
+      }
+    });
+
+    messaging().onNotificationOpenedApp((remoteMessage) => {
+      console.log(
+          "[FCM][onNotificationOpenedApp]: Notification caused app to open:" +
+          JSON.stringify(remoteMessage)
+      );
+    });
+
+    messaging()
+        .getInitialNotification()
+        .then((remoteMessage) => {
+          if (remoteMessage) {
+            console.log(
+                "[FCM][getInitialNotification]: Notification caused app to open from quit state:",
+                remoteMessage.notification
+            );
+          }
+        });
+
+    initInsider();
+
+    return unsubscribe;
+  }, []);
+}
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
-  let isInsiderInitialized = false;
 
   useEffect(() => {
     if (loaded) {
@@ -55,9 +91,7 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  useEffect(() => {
-    initInsider();
-  }, [isInsiderInitialized]);
+  initFirebaseAndInsider()
 
   if (!loaded) {
     return null;
