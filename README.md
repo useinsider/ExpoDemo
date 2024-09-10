@@ -37,8 +37,8 @@ Note: Can easily find the warnings added as comments by searching the `FIXME-INS
 
 ## IMPORTANT
 
-* The expo prebuild command was executed, generating the necessary native project files (android and ios directories) for both Android and iOS platforms.
-* Due to the inconsistent behavior of the iOS push token swizzling method, the `[Insider registerDeviceTokenWithApplication:application deviceToken:deviceToken];` method has been used within the `didRegisterForRemoteNotificationsWithDeviceToken` method in the AppDelegate.mm file.
+* The expo prebuild command was executed, generating the necessary native project files (android and ios directories) for both Android and iOS platforms. Please review the [Expo docs](https://docs.expo.dev/workflow/customizing/).
+* Due to the inconsistent behavior of the iOS push token swizzling method, the `[Insider registerDeviceTokenWithApplication:application deviceToken:deviceToken];` method has been used within the didRegisterForRemoteNotificationsWithDeviceToken method in the AppDelegate.mm file.
 * The Insider SDK includes swizzle methods for iOS push delegate methods. To ensure these methods function correctly, you must add the command `UNUserNotificationCenter.currentNotificationCenter.delegate = self;` to the AppDelegate.mm file.
 
 ### Android
