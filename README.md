@@ -35,6 +35,12 @@ Replace partner name and app group value in `app/_layout.tsx` with your info.
 
 Note: Can easily find the warnings added as comments by searching the `FIXME-INSIDER` key in the project and you can quickly make the necessary arrangements for the project.
 
+## IMPORTANT
+
+* The expo prebuild command was executed, generating the necessary native project files (android and ios directories) for both Android and iOS platforms.
+* Due to the inconsistent behavior of the iOS push token swizzling method, the `[Insider registerDeviceTokenWithApplication:application deviceToken:deviceToken];` method has been used within the `didRegisterForRemoteNotificationsWithDeviceToken` method in the AppDelegate.mm file.
+* The Insider SDK includes swizzle methods for iOS push delegate methods. To ensure these methods function correctly, you must add the command `UNUserNotificationCenter.currentNotificationCenter.delegate = self;` to the AppDelegate.mm file.
+
 ### Android
 
 1. Add `google-services.json` and `agconnect-services.json` to `android/app` folder.
