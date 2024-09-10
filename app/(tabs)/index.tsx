@@ -43,6 +43,34 @@ import GDPR from "../insider/GDPR";
 import MessageCenter from "../insider/MessageCenter";
 import ContentOptimizer from "../insider/ContentOptimizer";
 
+import messaging from "@react-native-firebase/messaging";
+
+async function requestUserPermission() {
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  if (enabled) {
+    console.log(
+        "[FCM][requestUserPermission]: Authorization status:",
+        authStatus
+    );
+  }
+
+  getToken();
+}
+
+const getToken = async () => {
+  const newToken = await messaging().getToken();
+
+  if (newToken) {
+    console.log("[FCM][getToken]: Token:", newToken);
+  } else {
+    return newToken;
+  }
+};
+
 async function requestLocationPermission() {
   try {
     if (Platform.OS != "android") return;
@@ -91,6 +119,7 @@ export default function main() {
     backgroundColor: isDarkMode ? Colors.black : Colors.white,
   };
 
+  requestUserPermission();
   requestLocationPermission();
 
   return (
