@@ -1,4 +1,4 @@
-# Insider React-Native Demo
+# Insider Expo Demo
 
 <p align="center">
   <img src="assets/images/insider-logo-read-me.jpg">
