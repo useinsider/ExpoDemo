@@ -519,6 +519,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InsiderNotificationContent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InsiderNotificationContent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.useinsider.expodemo.InsiderNotificationContent;
@@ -539,6 +541,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InsiderNotificationContent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InsiderNotificationContent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.useinsider.expodemo.InsiderNotificationContent;
@@ -560,6 +564,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InsiderNotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InsiderNotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.useinsider.expodemo.InsiderNotificationService;
@@ -692,6 +698,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InsiderNotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InsiderNotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.useinsider.expodemo.InsiderNotificationService;
