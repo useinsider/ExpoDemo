@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { PropsWithChildren } from "react";
 import {
   ScrollView,
@@ -90,7 +90,9 @@ export default function main() {
     backgroundColor: isDarkMode ? Colors.black : Colors.white,
   };
 
-  requestLocationPermission();
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
