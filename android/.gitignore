@@ -14,5 +14,8 @@ local.properties
 app/agconnect-services.json
 app/google-services.json
 
+# generated inline modules
+app/src/main/java/inline/
+
 # Bundle artifacts
 *.jsbundle

@@ -5,10 +5,9 @@
  * @format
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { PropsWithChildren } from "react";
 import {
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -21,12 +20,7 @@ import {
   Platform,
 } from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from "react-native/Libraries/NewAppScreen";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Header from "../../components/Header";
 import CustomSection from "../../components/CustomSection";
@@ -42,6 +36,11 @@ import PageVisit from "../insider/PageVisit";
 import GDPR from "../insider/GDPR";
 import MessageCenter from "../insider/MessageCenter";
 import ContentOptimizer from "../insider/ContentOptimizer";
+
+const Colors = {
+  black: "#000",
+  white: "#fff",
+};
 
 async function requestLocationPermission() {
   try {
@@ -91,7 +90,9 @@ export default function main() {
     backgroundColor: isDarkMode ? Colors.black : Colors.white,
   };
 
-  requestLocationPermission();
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
