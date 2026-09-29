@@ -60,7 +60,7 @@ function PageVisitMethods() {
           }}
         />
         <CustomButton
-          text="Product Page"
+          text="Category Page"
           onPress={() => {
             triggerPage("visitListingPage");
           }}
@@ -74,7 +74,7 @@ function PageVisitMethods() {
           }}
         />
         <CustomButton
-          text="Category Page"
+          text="Product Page"
           onPress={() => {
             triggerPage("visitProductDetailPage");
           }}
