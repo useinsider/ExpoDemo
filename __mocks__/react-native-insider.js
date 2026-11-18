@@ -58,7 +58,6 @@ const RNInsider = {
   registerWithQuietPermission: jest.fn(),
   setActiveForegroundPushView: jest.fn(),
   startTrackingGeofence: jest.fn(),
-  enableIDFACollection: jest.fn(),
   enableIpCollection: jest.fn(),
   enableLocationCollection: jest.fn(),
   enableCarrierCollection: jest.fn(),
