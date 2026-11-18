@@ -49,7 +49,6 @@ describe('RootLayout Insider initialisation', () => {
     expect(RNInsider.registerWithQuietPermission).toHaveBeenCalledWith(false);
     expect(RNInsider.setActiveForegroundPushView).toHaveBeenCalledTimes(1);
     expect(RNInsider.startTrackingGeofence).toHaveBeenCalledTimes(1);
-    expect(RNInsider.enableIDFACollection).toHaveBeenCalledWith(false);
     expect(RNInsider.enableIpCollection).toHaveBeenCalledWith(false);
     expect(RNInsider.enableLocationCollection).toHaveBeenCalledWith(false);
     expect(RNInsider.enableCarrierCollection).toHaveBeenCalledWith(false);

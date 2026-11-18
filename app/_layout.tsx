@@ -33,7 +33,6 @@ const initInsider = () => {
   RNInsider.registerWithQuietPermission(false);
   RNInsider.setActiveForegroundPushView();
   RNInsider.startTrackingGeofence();
-  RNInsider.enableIDFACollection(false);
   RNInsider.enableIpCollection(false);
   RNInsider.enableLocationCollection(false);
   RNInsider.enableCarrierCollection(false);
